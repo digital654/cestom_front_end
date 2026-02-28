@@ -51,7 +51,7 @@ export default function NavBar({ className }:  { className?: string } ) {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4 ml-20">
+          <div className="flex items-center gap-4 md:ml-20">
             <NavbarButton className="bg-white" variant="secondary">Login</NavbarButton>
             <NavbarButton className="bg-yellow-500 text-white" variant="primary">Book a call</NavbarButton>
           </div>
@@ -92,7 +92,7 @@ export default function NavBar({ className }:  { className?: string } ) {
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
-                className="w-full"
+                className="w-full bg-yellow-500 text-white"
               >
                 Book a call
               </NavbarButton>
