@@ -51,7 +51,7 @@ export default function FAQ() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
         
         {/* ── COLONNE GAUCHE ── */}
         <div className="relative flex flex-col justify-center">
