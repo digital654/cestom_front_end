@@ -41,11 +41,18 @@ export default function ClientReviews() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        .tl-page, .tl-page *, .tl-page *::before, .tl-page *::after {
+          box-sizing: border-box;
+        }
+        .tl-page *, .tl-page *::before, .tl-page *::after {
+          margin: 0;
+          padding: 0;
+        }
 
         .tl-page {
           /* Fond global avec motif points */
           background: #eaf1f8;
+          width: 100%;
           min-height: 100vh;
           display: flex; align-items: center; justify-content: center;
           padding: 48px 20px;
@@ -89,8 +96,8 @@ export default function ClientReviews() {
 
         /* Cadre de la photo  */
         .tl-frame {
-          width: 300px;   /* large */
-          height: 340px;  /* moins haut → paysage */
+          width: 300px;
+          height: 340px;
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 12px 40px rgba(0,0,0,0.15);
@@ -236,6 +243,124 @@ export default function ClientReviews() {
           width: 22px; height: 22px; border-radius: 50%;
           background: rgba(255,255,255,0.22);
           display: flex; align-items: center; justify-content: center;
+        }
+
+        @media (max-width: 1024px) {
+          .tl-page {
+            padding: 36px 18px;
+          }
+          .tl-card {
+            max-width: 820px;
+          }
+          .tl-left {
+            width: 360px;
+            min-width: 360px;
+            padding: 34px 24px;
+          }
+          .tl-frame {
+            width: 260px;
+            height: 300px;
+          }
+          .tl-thumbs {
+            left: calc(24px + 260px - 24px);
+          }
+          .tl-right {
+            padding: 34px 28px 34px 38px;
+          }
+          .tl-heading {
+            font-size: 26px;
+          }
+        }
+
+        @media (max-width: 860px) {
+          .tl-page {
+            min-height: auto;
+            padding: 24px 12px;
+          }
+          .tl-card {
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+          }
+          .tl-left {
+            width: 100%;
+            min-width: 0;
+            min-height: auto;
+            padding: 24px 18px 18px;
+            border-radius: 20px 20px 0 0;
+            flex-direction: column;
+          }
+          .tl-frame {
+            width: min(100%, 360px);
+            height: auto;
+            aspect-ratio: 4 / 5;
+          }
+          .tl-thumbs {
+            position: static;
+            transform: none;
+            margin-top: 14px;
+            width: 100%;
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+          }
+          .tl-thumb {
+            width: 44px;
+            height: 44px;
+          }
+          .tl-thumb:first-child {
+            width: 48px;
+            height: 48px;
+            margin-left: 0;
+          }
+          .tl-right {
+            padding: 22px 18px 20px;
+            border-radius: 0 0 20px 20px;
+          }
+          .tl-heading {
+            font-size: clamp(24px, 5.8vw, 30px);
+            margin-bottom: 14px;
+          }
+          .tl-name {
+            font-size: 20px;
+          }
+          .tl-bio {
+            line-height: 1.62;
+          }
+          .tl-footer {
+            align-items: stretch;
+            gap: 10px;
+          }
+          .tl-cta {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .tl-page {
+            padding: 16px 10px;
+          }
+          .tl-left {
+            padding: 18px 12px 14px;
+          }
+          .tl-right {
+            padding: 18px 12px 14px;
+          }
+          .tl-badge {
+            font-size: 10px;
+            padding: 4px 12px;
+          }
+          .tl-heading {
+            font-size: 22px;
+          }
+          .tl-contacts {
+            margin-bottom: 16px;
+          }
+          .tl-social {
+            width: 32px;
+            height: 32px;
+          }
         }
       `}</style>
 

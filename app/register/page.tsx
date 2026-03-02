@@ -17,6 +17,8 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { City, UserRegistration } from "@/lib/types";
 import { useRouter } from "next/navigation";
+import { registerUser } from "@/lib/api";
+import axios from "axios";
 
 export default function Register() {
   const [cities, setCities] = useState<City[]>([]);
@@ -37,6 +39,7 @@ export default function Register() {
   useEffect(() => {
     async function fetchCities() {
       try {
+
         const response = await fetch("https://cestom-digital-backend.up.railway.app/api/cities");
         if (!response.ok) {
           throw new Error("Failed to fetch cities");
@@ -59,36 +62,22 @@ export default function Register() {
     }));
   }
 
-  async function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitError(null);
     setSubmitSuccess(null);
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://cestom-digital-backend.up.railway.app/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const data = await registerUser({
+        username: formData.username.trim(),
+        password: formData.password,
+        email: formData.email.trim(),
+        nom: formData.nom.trim(),
+        prenoms: formData.prenoms.trim(),
+        city_id: formData.city_id,
+        cndp_consent: formData.cndp_consent,
       });
-      if (!response.ok) {
-        let errorMessage = "Echec de l'inscription. Verifiez vos informations et reessayez.";
-        try {
-          const errorData: { message?: string | string[] } = await response.json();
-          if (typeof errorData.message === "string" && errorData.message.trim()) {
-            errorMessage = errorData.message;
-          }
-          if (Array.isArray(errorData.message) && errorData.message.length > 0) {
-            errorMessage = errorData.message.join(", ");
-          }
-        } catch {
-          // Keep default message if response body is not JSON
-        }
-        throw new Error(errorMessage);
-      }
-      const data = await response.json();
       console.log("Registration successful:", data);
       setSubmitSuccess("Inscription reussie. Vous pouvez maintenant vous connecter.");
       setFormData({
@@ -101,9 +90,18 @@ export default function Register() {
         cndp_consent: false,
       });
       router.push("/login");
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error during registration:", error);
-      if (error instanceof Error && error.message) {
+      if (axios.isAxiosError(error)) {
+        const apiMessage = error.response?.data?.message;
+        if (typeof apiMessage === "string" && apiMessage.trim()) {
+          setSubmitError(apiMessage);
+        } else if (Array.isArray(apiMessage) && apiMessage.length > 0) {
+          setSubmitError(apiMessage.join(", "));
+        } else {
+          setSubmitError("Echec de l'inscription. Verifiez vos informations et reessayez.");
+        }
+      } else if (error instanceof Error && error.message) {
         setSubmitError(error.message);
       } else {
         setSubmitError("Echec de l'inscription. Verifiez vos informations et reessayez.");

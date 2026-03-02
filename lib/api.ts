@@ -1,9 +1,10 @@
 import axios from "axios";
 
+// Configure the base URL for the API
 export const api = axios.create({
     baseURL: "https://cestom-digital-backend.up.railway.app/api",
     withCredentials: true,
-    headers: { 
+    headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
     },
@@ -27,13 +28,11 @@ export async function registerUser(data: {
     }
 }
 
-export async function loginUser(data: { username: string; password: string }) {
+// Function to log in a user
+export async function loginUser({ username, password }: { username: string; password: string }) {
     try {
-        const response = await api.post("/auth/login", data, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const response = await api.post("/auth/login", { username, password });
+        console.log("Login successful:", response.data);
         return response.data;
     } catch (error) {
         console.error("Error during login:", error);

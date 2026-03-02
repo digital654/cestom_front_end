@@ -18,15 +18,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const api = axios.create({
-  baseURL: "https://cestom-digital-backend.up.railway.app/api",
-  withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-  },
-});
-
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,9 +31,10 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      await loginUser({ username: 'jduponto', password: 'MotDePasse123!' });
-      router.push("/");
-      router.refresh();
+      const res = await loginUser({ username: username.trim(), password: password.trim() });
+      console.log("La reponse : " + res.data);
+      //router.push("/");
+      //router.refresh();
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         const message = err.response?.data?.message || "Échec de la connexion. Veuillez vérifier vos identifiants.";
