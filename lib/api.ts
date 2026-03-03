@@ -1,8 +1,11 @@
 import axios from "axios";
+import { UserRegistration } from "./types";
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://cestom-digital-backend.up.railway.app/api";
 
 // Configure the base URL for the API
 export const api = axios.create({
-    baseURL: "https://cestom-digital-backend.up.railway.app/api",
+    baseURL: API_BASE_URL,
     withCredentials: true,
     headers: {
         "Content-Type": "application/json",
@@ -10,15 +13,7 @@ export const api = axios.create({
     },
 });
 
-export async function registerUser(data: {
-    username: string;
-    password: string;
-    email: string;
-    nom: string;
-    prenoms: string;
-    city_id: string;
-    cndp_consent: boolean;
-}) {
+export async function registerUser(data: UserRegistration) {
     try {
         const response = await api.post("/auth/register", data);
         return response.data;

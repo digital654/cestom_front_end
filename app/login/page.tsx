@@ -5,6 +5,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { loginUser } from "@/lib/api";
+import { persistAuthData } from "@/lib/auth-storage";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -31,10 +32,20 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const res = await loginUser({ username: username.trim(), password: password.trim() });
-      console.log("La reponse : " + res.data);
-      //router.push("/");
-      //router.refresh();
+      const authData = await loginUser({ username: username.trim(), password: password.trim() });
+      const token = persistAuthData(authData);
+
+      if (!token) {
+        setError("Token de session introuvable. Veuillez vous reconnecter.");
+        return;
+      }
+
+      console.log("La reponse :", authData);
+      setTimeout(() => {
+        router.push("/");
+        router.refresh();
+      }, 1000);
+
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         const message = err.response?.data?.message || "Échec de la connexion. Veuillez vérifier vos identifiants.";
@@ -83,7 +94,7 @@ export default function Login() {
               )}
 
               <div className="grid gap-2">
-                <Label htmlFor="username">Nom d'utilisateur</Label>
+                <Label htmlFor="username">Nom d&apos;utilisateur</Label>
                 <Input
                   id="username"
                   name="username"
