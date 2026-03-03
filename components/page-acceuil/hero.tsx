@@ -2,8 +2,8 @@
     return (
 
 
-        <div className="w-full h-screen relative flex items-center justify-center">
-            <img src="/hero.jpg" alt="Hero Image" className="object-cover w-full h-full fixed opacity-70 " />
+        <div className="w-full h-screen relative overflow-hidden flex items-center justify-center">
+            <img src="/hero.jpg" alt="Hero Image" className="absolute inset-0 object-cover w-full h-full opacity-70 pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl px-4 z-10 space-y-8 md:space-y-0 md:space-x-8">
                 <div className="flex flex-col gap-10">
                     <h1 className="md:text-7xl text-6xl p-0.5 font-bold flex flex-col tracking-tighter leading-17  text-white z-10">
