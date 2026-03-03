@@ -1,3 +1,6 @@
+
+import OurCommunity from "@/components/page-acceuil/our-community"; 
+import Footer from "@/components/page-acceuil/footer";
 import Events from "@/components/page-acceuil/events";
 import FAQ from "@/components/page-acceuil/faqs";
 import ClientReviews from "@/components/page-acceuil/ClientReviews";
@@ -10,6 +13,8 @@ export default function Home() {
       <ClientReviews />
       <FAQ />
       <LatestNews />
+      <OurCommunity/>
+    <Footer/>
     </div>
   )
 }
