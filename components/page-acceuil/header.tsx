@@ -1,4 +1,4 @@
-﻿import NavBar from "../ui/navbar";
+﻿import { NavBar } from "../ui/navbar";
 
 export default function Header() {
     return (    
@@ -6,6 +6,7 @@ export default function Header() {
           <NavBar />
         </div>
     );
+
 }
 
 

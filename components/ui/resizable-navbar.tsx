@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-
 import {
   motion,
   AnimatePresence,
@@ -58,7 +57,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   });
   const [visible, setVisible] = useState<boolean>(false);
 
-  useMotionValueEvent(scrollY, "change", (latest: number) => {
+  useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {
       setVisible(true);
     } else {
@@ -70,7 +69,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <motion.div
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
+      className={cn("fixed flex items-center justify-center inset-x-0 md:top-15 top-5 z-40 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -104,7 +103,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-20 hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+        " z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white fixed  px-4 py-2 lg:flex dark:bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className,
       )}
@@ -129,14 +128,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-white hover:text-black transition-colors delay-75 dark:text-neutral-300"
+          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute hover:shadow-md hover:text-black inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -225,27 +224,25 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <IconX className="text-white dark:text-white" onClick={onClick} />
+    <IconX className="text-black dark:text-white" onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-white dark:text-white" onClick={onClick} />
+    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
   );
 };
 
 export const NavbarLogo = () => {
-  const isMobile = window.innerWidth < 786; // Simple check for mobile devices
   return (
     <a
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="/Logo.png"
+        src="/logo.png"
         alt="logo"
-        width={isMobile ? 50 : 100}
-        height={isMobile ? 50 : 100}
-        className={'md:bg-white md:p-2 md:rounded-full'}
+        width={50}
+        height={50}
       />
-      <span className="font-medium text-2xl md:text-3xl first-letter:uppercase text-white dark:text-white">Cestom</span>
+      <span className="font-medium text-black dark:text-white">Cestom</span>
     </a>
   );
 };
