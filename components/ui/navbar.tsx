@@ -12,9 +12,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 
-//navnar responsive telecharger et modifier depuis acernity.com j ai installer la bibliotheque motion pour les animation et j ai modifier le code pour l adapter a mon projet cestom en changeant les liens et les nom des items de navigation et en ajoutant le logo de cestom et en changeant les couleurs pour correspondre shadcn ui 
-
-export default function NavBar({ className }:  { className?: string } ) {
+export function NavBar() {
   const navItems = [
     {
       name: "Acceuil",
@@ -41,19 +39,18 @@ export default function NavBar({ className }:  { className?: string } ) {
       link: "#contact",
     },
   ];
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="absolute w-full bg-green-500 top-0 ">
-      <Navbar className="">
+    <div className="relative w-full flex items-center justify-center">
+      <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4 md:ml-20">
-            <NavbarButton className="bg-white" variant="secondary">Login</NavbarButton>
-            <NavbarButton className="bg-yellow-500 text-white" variant="primary">Book a call</NavbarButton>
+          <div className="flex items-center gap-4">
+            <NavbarButton variant="secondary">Login</NavbarButton>
+            <NavbarButton variant="primary">Contactez nous</NavbarButton>
           </div>
         </NavBody>
 
@@ -92,9 +89,9 @@ export default function NavBar({ className }:  { className?: string } ) {
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
-                className="w-full bg-yellow-500 text-white"
+                className="w-full"
               >
-                Book a call
+                Contactez nous
               </NavbarButton>
             </div>
           </MobileNavMenu>
@@ -104,4 +101,5 @@ export default function NavBar({ className }:  { className?: string } ) {
     </div>
   );
 }
+
 
