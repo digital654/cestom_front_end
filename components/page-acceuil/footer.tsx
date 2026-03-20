@@ -95,7 +95,7 @@
         </div>
 
         <div className="flex gap-8">
-          <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">Confidentialités & Conditions</a></p> target="_blank"
+          <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">Confidentialités & Conditions</a></p> 
           <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">FAQ</a></p>
           <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">Contactez-nous</a></p>
           </div>
