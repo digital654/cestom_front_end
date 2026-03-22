@@ -11,6 +11,8 @@ import LatestNews from "@/components/page-acceuil/latest-news";
 
 import Header from '@/components/page-acceuil/header'
 import Hero from '@/components/page-acceuil/hero'
+import { DashboardHeader } from "@/components/ui/DashboardHeader";
+import { WelcomeCard } from "@/components/ui/WelcomeCard";
 
 export default function Home() {
   return (
