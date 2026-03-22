@@ -1,15 +1,19 @@
-// Imports des composants Documents
+// Imports fusionnés
 import { DashboardHeader } from "@/components/ui/DashboardHeader";
 import { WelcomeCard } from "@/components/ui/WelcomeCard";
 import DocumentList from "./components/documents/DocumentList";
+import { PaymentCard } from "./components/profil/paymentcard";
+import { ProfileCompletion } from "./components/profil/profilecompletion";
 
 export default function Page() {
   return (
-    <main >
+    <main>
         <DashboardHeader />
         <WelcomeCard /> 
-      <div >
+        <ProfileCompletion />
+      <div>
         <DocumentList />
+        <PaymentCard />
       </div>
     </main>
   );

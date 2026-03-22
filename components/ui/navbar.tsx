@@ -51,6 +51,7 @@ export function NavBar() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary"><Link href="/login">Login</Link></NavbarButton>
+            <NavbarButton variant="outline"><Link href="/dashboard">Dashboard</Link></NavbarButton>
             <NavbarButton variant="primary">Contactez nous</NavbarButton>
           </div>
         </NavBody>
