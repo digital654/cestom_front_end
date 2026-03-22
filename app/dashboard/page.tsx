@@ -1,9 +1,11 @@
-
-export default function DashboardPage() {
-    return (
-        <div>
-            <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-            <p>Welcome to the dashboard!</p>
-        </div>
-    );
+// Imports des composants Documents
+import DocumentList from "./components/documents/DocumentList";
+  export default function Page() {
+  return (
+    <main className="min-h-screen bg-gray-50 p-6 flex justify-center">
+      <div className="w-full max-w-3xl">
+        <DocumentList />
+      </div>
+    </main>
+  );
 }
