@@ -13,7 +13,7 @@ const AUTH_VERIFY_ENDPOINTS = [
 ];
 
 const PUBLIC_PATH_PREFIXES = ["/login", "/", "/register"];
-const PROTECTED_PATHS = ["/landingpage"];
+const PROTECTED_PATHS = ["/"];
 
 type AuthContextValue = {
   isAuthenticated: boolean;

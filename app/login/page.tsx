@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { loginUser } from "@/lib/api";
 import { persistAuthData } from "@/lib/auth-storage";
+import { decodeToken } from "@/lib/decode";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -34,6 +35,10 @@ export default function Login() {
     try {
       const authData = await loginUser({ username: username.trim(), password: password.trim() });
       const token = persistAuthData(authData);
+      console.log("Token JWT :", token);
+
+      console.log(decodeToken(token as string));
+
 
       if (!token) {
         setError("Token de session introuvable. Veuillez vous reconnecter.");
@@ -42,8 +47,8 @@ export default function Login() {
 
       console.log("La reponse :", authData);
       setTimeout(() => {
-        router.push("/");
-        router.refresh();
+        //router.push("/");
+        //router.refresh();
       }, 1000);
 
     } catch (err: unknown) {

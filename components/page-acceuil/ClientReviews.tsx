@@ -2,12 +2,11 @@
 
 const member = {
   name: "Ronald Richards",
-  role: "Conseiller financier",
-  phone: "123-456-7890",
-  email: "zenvia@example.com",
-  bio: "L'excellence projetée est remarquablement estimée à Devonshire. Côté vie passée. Continuez à parler, c'était horrible pour la position domestique. L'excellence projetée est estimée à Devonshire. Côté vie passée. Continuez à parler.",
+  role: "Président de la CESTOM Maroc",
+  phone: "+212 6 00 00 0000",
+  email: "contact@cestom-maroc.org",
+  bio: "Leader passionné et dévoué, je m'engage au quotidien pour accompagner les étudiants et stagiaires togolais au Maroc. Ensemble, nous construisons une communauté forte et solidaire.",
   social: { facebook: "#", linkedin: "#", twitter: "#", instagram: "#" },
-  
   photo: "/p1.jpeg",
 };
 
@@ -38,9 +37,16 @@ function SocialIcon({ type }: { type: string }) {
 
 export default function ClientReviews() {
   return (
-    <>
+    <section id="temoignages" className="py-24 bg-white relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-[#f0fdf4]"></div>
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-[#d9f92a]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#0b3d0b]/5 rounded-full blur-3xl"></div>
+      </div>
+
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
         .tl-page, .tl-page *, .tl-page *::before, .tl-page *::after {
           box-sizing: border-box;
         }
@@ -48,12 +54,8 @@ export default function ClientReviews() {
           margin: 0;
           padding: 0;
         }
-
         .tl-page {
-          /* Fond global avec motif points */
-          background: #eaf1f8;
           width: 100%;
-          min-height: 100vh;
           display: flex; align-items: center; justify-content: center;
           padding: 48px 20px;
           font-family: 'DM Sans', sans-serif;
@@ -62,46 +64,39 @@ export default function ClientReviews() {
         .tl-page::before {
           content: '';
           position: absolute; inset: 0;
-          background-image: radial-gradient(circle, rgba(180,200,220,0.6) 1.5px, transparent 1.5px);
+          background-image: radial-gradient(circle, rgba(180,200,220,0.4) 1.5px, transparent 1.5px);
           background-size: 24px 24px;
           pointer-events: none;
         }
-
-        /* Carte : flex row, les 2 panneaux côte à côte, MÊME fond blanc */
         .tl-card {
-          max-width: 920px; width: 100%;
+          max-width: 1000px; width: 100%;
           display: flex; flex-direction: row;
           background: #ffffff;
           border-radius: 24px;
-          box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.08);
           position: relative; z-index: 1;
-          overflow: visible; /* ronds peuvent déborder */
+          overflow: visible;
+          border: 1px solid rgba(0,0,0,0.05);
         }
-
-        /* PANNEAU GAUCHE  */
         .tl-left {
-          /* Même fond blanc que la carte */
-          background: #ffffff;
+          background: linear-gradient(135deg, #0b3d0b 0%, #14452f 100%);
           border-radius: 24px 0 0 24px;
-          width: 420px;
-          min-width: 420px;
-          flex-shrink: 0;
+          width: 380px;
+          min-width: 380px;
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 40px 36px;
-          min-height: 420px;
+          padding: 40px;
+          min-height: 480px;
         }
-
-        /* Cadre de la photo  */
         .tl-frame {
-          width: 300px;
+          width: 280px;
           height: 340px;
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-          background: #e2e8f0;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+          background: #1a1a1a;
           flex-shrink: 0;
           position: relative;
         }
@@ -109,340 +104,242 @@ export default function ClientReviews() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          /* centré sur le visage */
-          object-position: center 20%;
+          object-position: center 15%;
           display: block;
         }
-
-        /*
-          Miniatures rondes positionnées en absolute,
-          centrées sur le bord DROIT du cadre.
-
-          .tl-left est large de 420px, padding gauche 36px.
-          Centre horizontal du cadre (300px) : 36 + 300 = 336px depuis le bord gauche de .tl-left
-          On veut les ronds (52px) à cheval sur ce bord droit → left = 336 - 26 = 310px
-        */
+        .tl-frame::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(11,61,11,0.3), transparent);
+        }
         .tl-thumbs {
           position: absolute;
-          left: calc(36px + 300px - 26px); /* bord droit du cadre - rayon du rond */
+          right: -26px;
           top: 50%;
           transform: translateY(-50%);
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 12px;
           z-index: 20;
         }
-
         .tl-thumb {
           width: 52px; height: 52px;
           border-radius: 50%;
           overflow: hidden;
           border: 3px solid #fff;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
           background: #94a3b8;
           flex-shrink: 0;
           cursor: default;
         }
-        /* Premier rond  */
         .tl-thumb:first-child {
-          width: 58px; height: 58px;
-          border-color: #16a34a;
-          box-shadow: 0 0 0 3px rgba(22,163,74,0.22), 0 3px 12px rgba(0,0,0,0.18);
-          margin-left: -3px; /* compense taille */
+          width: 60px; height: 60px;
+          border-color: #d9f92a;
+          box-shadow: 0 0 0 3px rgba(217,249,42,0.3), 0 4px 15px rgba(0,0,0,0.2);
         }
         .tl-thumb img {
           width: 100%; height: 100%;
-          object-fit: cover; object-position: center 20%;
+          object-fit: cover; object-position: center 15%;
           display: block;
         }
-
-        /* PANNEAU DROIT  */
         .tl-right {
           flex: 1;
           background: #ffffff;
           border-radius: 0 24px 24px 0;
-          /* padding-left généreux pour que les ronds (qui débordent de ~26px) ne chevauchent pas le texte */
-          padding: 44px 40px 40px 48px;
+          padding: 48px 44px 44px 52px;
           display: flex; flex-direction: column; justify-content: center;
         }
-
-        /* Badge "+ Nos Leaders +" */
         .tl-badge {
           display: inline-flex; align-items: center; gap: 6px;
           background: #f0fdf4;
-          border: 1.5px solid #bbf7d0;
+          border: 1.5px solid rgba(217,249,42,0.5);
           border-radius: 50px;
-          padding: 5px 15px;
+          padding: 6px 16px;
           font-size: 11px; font-weight: 700;
-          letter-spacing: 0.08em; color: #15803d;
-          width: fit-content; margin-bottom: 12px;
+          letter-spacing: 0.1em; color: #0b3d0b;
+          width: fit-content; margin-bottom: 16px;
           user-select: none;
         }
-
         .tl-heading {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 30px; font-weight: 700;
+          font-size: 32px; font-weight: 700;
           color: #0f172a; line-height: 1.2;
-          margin-bottom: 20px;
+          margin-bottom: 24px;
         }
-
         .tl-name {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 22px; font-weight: 700;
-          color: #0f172a; margin-bottom: 3px;
+          font-size: 24px; font-weight: 700;
+          color: #0f172a; margin-bottom: 4px;
         }
         .tl-role {
-          font-size: 12px; font-weight: 700;
-          color: #16a34a; letter-spacing: 0.05em;
-          margin-bottom: 14px;
+          font-size: 13px; font-weight: 600;
+          color: #0b3d0b; letter-spacing: 0.05em;
+          margin-bottom: 18px;
         }
         .tl-bio {
-          font-size: 13px; line-height: 1.78;
-          color: #64748b; margin-bottom: 18px;
+          font-size: 14px; line-height: 1.8;
+          color: #64748b; margin-bottom: 24px;
         }
-
-        .tl-contacts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+        .tl-contacts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
         .tl-contact {
-          display: flex; align-items: center; gap: 9px;
+          display: flex; align-items: center; gap: 10px;
           font-size: 13px; color: #334155; font-weight: 500;
         }
-        .tl-contact svg { color: #64748b; flex-shrink: 0; }
-
+        .tl-contact svg { color: #0b3d0b; flex-shrink: 0; }
         .tl-footer {
           display: flex; align-items: center;
           justify-content: space-between;
-          flex-wrap: wrap; gap: 12px;
+          flex-wrap: wrap; gap: 16px;
         }
-
-        .tl-socials { display: flex; gap: 8px; }
+        .tl-socials { display: flex; gap: 10px; }
         .tl-social {
-          width: 34px; height: 34px; border-radius: 50%;
+          width: 40px; height: 40px; border-radius: 50%;
           border: 1.5px solid #e2e8f0; background: #fff;
           display: flex; align-items: center; justify-content: center;
           color: #64748b; text-decoration: none;
-          transition: all 0.2s ease;
+          transition: all 0.25s ease;
         }
-        .tl-social:hover { background: #0f172a; color: #fff; border-color: #0f172a; transform: translateY(-2px); }
+        .tl-social:hover { background: #0b3d0b; color: #fff; border-color: #0b3d0b; transform: translateY(-3px); }
         .tl-social.li:hover { background: #0077b5; border-color: #0077b5; }
-
         .tl-cta {
           display: inline-flex; align-items: center; gap: 8px;
-          background: #16a34a; color: #fff;
+          background: #0b3d0b; color: #fff;
           border: none; border-radius: 50px;
-          padding: 11px 20px;
-          font-size: 12.5px; font-weight: 600;
+          padding: 14px 24px;
+          font-size: 13px; font-weight: 600;
           font-family: 'DM Sans', sans-serif;
           cursor: pointer;
-          transition: all 0.2s ease; white-space: nowrap;
+          transition: all 0.25s ease; white-space: nowrap;
         }
         .tl-cta:hover {
-          background: #15803d; transform: translateY(-2px);
-          box-shadow: 0 8px 22px rgba(22,163,74,0.28);
+          background: #14452f; transform: translateY(-2px);
+          box-shadow: 0 10px 30px rgba(11,61,11,0.3);
         }
         .tl-cta-circle {
           width: 22px; height: 22px; border-radius: 50%;
-          background: rgba(255,255,255,0.22);
+          background: rgba(255,255,255,0.2);
           display: flex; align-items: center; justify-content: center;
         }
-
         @media (max-width: 1024px) {
-          .tl-page {
-            padding: 36px 18px;
-          }
-          .tl-card {
-            max-width: 820px;
-          }
-          .tl-left {
-            width: 360px;
-            min-width: 360px;
-            padding: 34px 24px;
-          }
-          .tl-frame {
-            width: 260px;
-            height: 300px;
-          }
-          .tl-thumbs {
-            left: calc(24px + 260px - 24px);
-          }
-          .tl-right {
-            padding: 34px 28px 34px 38px;
-          }
-          .tl-heading {
-            font-size: 26px;
-          }
+          .tl-page { padding: 36px 18px; }
+          .tl-card { max-width: 900px; }
+          .tl-left { width: 320px; min-width: 320px; padding: 30px; min-height: 420px; }
+          .tl-frame { width: 240px; height: 300px; }
+          .tl-thumbs { right: -22px; }
+          .tl-thumbs { left: calc(30px + 240px - 24px); }
+          .tl-right { padding: 34px 32px 34px 40px; }
+          .tl-heading { font-size: 28px; }
         }
-
         @media (max-width: 860px) {
-          .tl-page {
-            min-height: auto;
-            padding: 24px 12px;
-          }
-          .tl-card {
-            flex-direction: column;
-            border-radius: 20px;
-            overflow: hidden;
-          }
+          .tl-page { min-height: auto; padding: 24px 16px; }
+          .tl-card { flex-direction: column; border-radius: 20px; overflow: hidden; }
           .tl-left {
-            width: 100%;
-            min-width: 0;
-            min-height: auto;
-            padding: 24px 18px 18px;
-            border-radius: 20px 20px 0 0;
+            width: 100%; min-width: 0; min-height: auto;
+            padding: 30px 20px; border-radius: 20px 20px 0 0;
             flex-direction: column;
           }
-          .tl-frame {
-            width: min(100%, 360px);
-            height: auto;
-            aspect-ratio: 4 / 5;
-          }
+          .tl-frame { width: min(100%, 280px); height: auto; aspect-ratio: 4/5; }
           .tl-thumbs {
-            position: static;
-            transform: none;
-            margin-top: 14px;
-            width: 100%;
-            flex-direction: row;
-            justify-content: center;
-            gap: 8px;
+            position: static; transform: none; margin-top: 16px;
+            width: 100%; flex-direction: row; justify-content: center; gap: 10px;
           }
-          .tl-thumb {
-            width: 44px;
-            height: 44px;
-          }
-          .tl-thumb:first-child {
-            width: 48px;
-            height: 48px;
-            margin-left: 0;
-          }
-          .tl-right {
-            padding: 22px 18px 20px;
-            border-radius: 0 0 20px 20px;
-          }
-          .tl-heading {
-            font-size: clamp(24px, 5.8vw, 30px);
-            margin-bottom: 14px;
-          }
-          .tl-name {
-            font-size: 20px;
-          }
-          .tl-bio {
-            line-height: 1.62;
-          }
-          .tl-footer {
-            align-items: stretch;
-            gap: 10px;
-          }
-          .tl-cta {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .tl-page {
-            padding: 16px 10px;
-          }
-          .tl-left {
-            padding: 18px 12px 14px;
-          }
-          .tl-right {
-            padding: 18px 12px 14px;
-          }
-          .tl-badge {
-            font-size: 10px;
-            padding: 4px 12px;
-          }
-          .tl-heading {
-            font-size: 22px;
-          }
-          .tl-contacts {
-            margin-bottom: 16px;
-          }
-          .tl-social {
-            width: 32px;
-            height: 32px;
-          }
+          .tl-thumb { width: 44px; height: 44px; }
+          .tl-thumb:first-child { width: 50px; height: 50px; margin-left: 0; }
+          .tl-right { padding: 28px 24px 24px; border-radius: 0 0 20px 20px; }
+          .tl-heading { font-size: clamp(24px, 5vw, 30px); margin-bottom: 18px; }
+          .tl-name { font-size: 22px; }
+          .tl-bio { line-height: 1.7; }
+          .tl-footer { align-items: stretch; gap: 12px; }
+          .tl-cta { width: 100%; justify-content: center; }
         }
       `}</style>
 
-      <div className="tl-page">
-        <div className="tl-card">
-
-          {/* ── GAUCHE  */}
-          <div className="tl-left">
-
-            {/* Cadre photo format paysage */}
-            <div className="tl-frame">
-              <img src={member.photo} alt={member.name} />
-            </div>
-
-            {/* 4 miniatures rondes centrées sur le bord droit du cadre */}
-            <div className="tl-thumbs">
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} className="tl-thumb">
-                  <img src={member.photo} alt={`${member.name} ${i + 1}`} />
-                </div>
-              ))}
-            </div>
-
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-[#f0fdf4] border border-[#d9f92a]/30 rounded-full px-4 py-2 mb-4">
+            <span className="w-2 h-2 bg-[#0b3d0b] rounded-full"></span>
+            <span className="text-[#0b3d0b] font-semibold text-sm">Notre Leadership</span>
+            <span className="w-2 h-2 bg-[#0b3d0b] rounded-full"></span>
           </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
+            Rencontrez Nos <span className="text-[#0b3d0b]">Leaders</span>
+          </h2>
+        </div>
 
-          {/* ── DROITE : informations ── */}
-          <div className="tl-right">
-
-            <div className="tl-badge">
-              + Nos Leaders +
-            </div>
-
-            <h2 className="tl-heading">Avis de nos clients</h2>
-
-            <p className="tl-name">{member.name}</p>
-            <p className="tl-role">{member.role}</p>
-            <p className="tl-bio">{member.bio}</p>
-
-            <div className="tl-contacts">
-              <div className="tl-contact">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9c1.91 3.27 4.72 6.07 8 8l1.35-1.35a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                {member.phone}
+        <div className="tl-page">
+          <div className="tl-card">
+            {/* Left Panel */}
+            <div className="tl-left">
+              <div className="tl-frame">
+                <img src={member.photo} alt={member.name} />
               </div>
-              <div className="tl-contact">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                {member.email}
-              </div>
-            </div>
-
-            <div className="tl-footer">
-              <div className="tl-socials">
-                {[
-                  { s: "facebook", cls: "fb" },
-                  { s: "linkedin", cls: "li" },
-                  { s: "twitter",  cls: "tw" },
-                  { s: "instagram",cls: "ig" },
-                ].map(({ s, cls }) => (
-                  <a key={s} href={member.social[s as keyof typeof member.social]} className={`tl-social ${cls}`} aria-label={s}>
-                    <SocialIcon type={s} />
-                  </a>
+              <div className="tl-thumbs">
+                {[0, 1, 2, 3].map((i) => (
+                  <div key={i} className="tl-thumb">
+                    <img src={member.photo} alt={`${member.name} ${i + 1}`} />
+                  </div>
                 ))}
               </div>
-
-              <button className="tl-cta">
-                Voir Tous les Membres
-                <span className="tl-cta-circle">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </span>
-              </button>
             </div>
 
+            {/* Right Panel */}
+            <div className="tl-right">
+              <div className="tl-badge">
+                + NOS LEADERS +
+              </div>
+
+              <h2 className="tl-heading">Un leadership au service de la communauté</h2>
+
+              <p className="tl-name">{member.name}</p>
+              <p className="tl-role">{member.role}</p>
+              <p className="tl-bio">{member.bio}</p>
+
+              <div className="tl-contacts">
+                <div className="tl-contact">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9c1.91 3.27 4.72 6.07 8 8l1.35-1.35a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  {member.phone}
+                </div>
+                <div className="tl-contact">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  {member.email}
+                </div>
+              </div>
+
+              <div className="tl-footer">
+                <div className="tl-socials">
+                  {[
+                    { s: "facebook", cls: "fb" },
+                    { s: "linkedin", cls: "li" },
+                    { s: "twitter", cls: "tw" },
+                    { s: "instagram",cls: "ig" },
+                  ].map(({ s, cls }) => (
+                    <a key={s} href={member.social[s as keyof typeof member.social]} className={`tl-social ${cls}`} aria-label={s}>
+                      <SocialIcon type={s} />
+                    </a>
+                  ))}
+                </div>
+
+                <button className="tl-cta">
+                  Voir Tous les Membres
+                  <span className="tl-cta-circle">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

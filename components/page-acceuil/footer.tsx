@@ -1,108 +1,180 @@
-﻿export default function Footer() {
+﻿"use client";
+
+export default function Footer() {
     return(
-        <footer className="mt-6 bg-black grid grid-cols-1 place-items-center">
-      <div className="px-12 mt-8 mb-6 md:grid md:grid-cols-4 md:gap-12">
-        {/* First Card */}
-        <div>
-          <div className="flex items-center gap-2">
-            <img
-              src="./img/Logo cestom PNG(1) (1).png"
-              alt="logo cestom"
-              className="w-13 h-10 inline-block"
-            />
-            <p className="text-white font-bold text-xl">CESTOM</p>
-          </div>
+        <footer className="bg-[#0f172a] text-white">
+            {/* Main Footer Content */}
+            <div className="container mx-auto px-6 lg:px-12 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    {/* Column 1 - Logo & About */}
+                    <div className="lg:col-span-1">
+                        <div className="flex items-center gap-3 mb-6">
+                            <img
+                                src="/cestom_logo.png"
+                                alt="Logo CESTOM"
+                                className="w-12 h-12"
+                            />
+                            <div>
+                                <span className="text-xl font-bold text-[#d9f92a]">CESTOM</span>
+                                <p className="text-xs text-gray-400">Maroc</p>
+                            </div>
+                        </div>
+                        
+                        <div className="text-gray-400 text-sm leading-relaxed mb-6">
+                            <p>La Coordination des Etudiants et Stagiaires Togolais au Maroc. Unir, accompagner et valoriser la communauté estudiantine togolaise.</p>
+                        </div>
 
-          <div className="text-white mt-2 text-[14px]">
-            <p>Chaque démo construite avec Teba aura un aspect</p>
-            <p>différent. Vous pourrez personnaliser presque tout</p>
-            <p>dans l'apparence de votre site web avec seulement</p>
-            <p>quelques</p>
-          </div>
+                        {/* Social Links */}
+                        <div className="flex items-center gap-3">
+                            <a 
+                                href="#" 
+                                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#d9f92a] hover:text-[#0b3d0b] transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                            <a 
+                                href="#" 
+                                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#d9f92a] hover:text-[#0b3d0b] transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                                </svg>
+                            </a>
+                            <a 
+                                href="#" 
+                                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#d9f92a] hover:text-[#0b3d0b] transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                            <a 
+                                href="#" 
+                                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#d9f92a] hover:text-[#0b3d0b] transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
 
-          <div className="rounded-full flex items-center gap-3 mt-6">
-            <a href="#">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/20/20673.png"
-                alt="facebook"
-                className="w-6 h-6 bg-white rounded-full"
-              />
-            </a>
+                    {/* Column 2 - Quick Links */}
+                    <div>
+                        <h4 className="text-lg font-bold mb-6 text-[#d9f92a]">Liens Rapides</h4>
+                        <ul className="space-y-3">
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    À propos de nous
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Nos Leaders
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Nos Partenaires
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Blog & Actualités
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Événements
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                    <span className="w-1.5 h-1.5 bg-[#d9f92a] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                    Contactez-nous
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-            <a href="#">
-              <img
-                src="https://e7.pngegg.com/pngimages/432/1016/png-clipart-computer-icons-logo-instagram-logo-miscellaneous-logo-thumbnail.png"
-                alt="instagram"
-                className="w-6 h-6"
-              />
-            </a>
+                    {/* Column 3 - Contact Info */}
+                    <div>
+                        <h4 className="text-lg font-bold mb-6 text-[#d9f92a]">Contactez-nous</h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <span className="text-gray-400 text-sm">Rabat, Maroc<br/>(Proche de l'Ambassade du Togo)</span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <span className="text-gray-400 text-sm">contact@cestom-maroc.org</span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <span className="text-gray-400 text-sm">+212 6 00 00 0000</span>
+                            </li>
+                        </ul>
+                    </div>
 
-            <a href="#">
-              <img
-                src=""
-                alt="twitter"
-                className="w-6 h-6"
-              />
-            </a>
+                    {/* Column 4 - Newsletter */}
+                    <div>
+                        <h4 className="text-lg font-bold mb-6 text-[#d9f92a]">Newsletter</h4>
+                        <p className="text-gray-400 text-sm mb-4">
+                            Inscrivez-vous pour recevoir nos dernières nouvelles et événements.
+                        </p>
+                        <form className="space-y-3">
+                            <input 
+                                type="email" 
+                                placeholder="Votre email" 
+                                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#d9f92a] transition-colors"
+                            />
+                            <button 
+                                type="submit"
+                                className="w-full bg-[#d9f92a] text-[#0b3d0b] font-semibold py-3 rounded-lg hover:bg-[#c4e524] transition-colors"
+                            >
+                                S'inscrire
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            <a href="#">
-              <img
-                src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNC0xMC5wbmc.png"
-                alt="linkedin"
-                className="w-6 h-6 rounded-full"
-              />
-            </a>
-          </div>
-        </div>
-
-        {/* Second Card */}
-        <div className="text-white mt-6">
-          <p className="font-bold">Liens rapides</p>
-          <div className="text-[14px]">
-            <p><a href="#" className="hover:underline hover:opacity-80"target="_blank">A propos de nous</a></p>
-            <p><a href="#" className="hover:underline hover:opacity-80"target="_blank">Nos leaders</a></p>
-            <p><a href="#" className="hover:underline hover:opacity-80"target="_blank">Nos Partenaires</a></p>
-            <p><a href="#" className="hover:underline hover:opacity-80"target="_blank">Blogs</a></p>
-            <p><a href="#" className="hover:underline hover:opacity-80"target="_blank">Contactez-nous</a></p>
-          </div>
-        </div>
-
-        {/* Third Card */}
-        <div className="text-white mt-6 text-[14px]">
-          <p className="font-bold">Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-        </div>
-
-        {/* Fourth Card */}
-        <div className="text-white mt-6 text-[14px]">
-          <p className="font-bold">Informations</p>
-          <p><a href="#" className="hover:underline hover:opacity-80">Lorem ipsum</a></p>
-          <p><a href="#" className="hover:underline hover:opacity-80">Lorem ipsum</a></p>
-          <p><a href="#" className="hover:underline hover:opacity-80">Lorem ipsum</a></p>
-          <p><a href="#" className="hover:underline hover:opacity-80">Lorem ipsum</a></p>
-          <p><a href="#" className="hover:underline hover:opacity-80">FAQs</a></p>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="bg-slate-900 flex flex-col md:flex-row justify-between items-center w-full text-white px-6 py-4 gap-4">
-        <div>
-          Droit d'auteur © 2026 devstarit. Tous droits réservés.
-        </div>
-
-        <div className="flex gap-8">
-          <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">Confidentialités & Conditions</a></p> 
-          <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">FAQ</a></p>
-          <p><a href="#" className="hover:underline hover:opacity-80" target="_blank">Contactez-nous</a></p>
-          </div>
-      </div>
-    </footer>
+            {/* Bottom Bar */}
+            <div className="border-t border-white/10">
+                <div className="container mx-auto px-6 lg:px-12 py-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div className="text-gray-400 text-sm">
+                            © 2026 CESTOM Maroc. Tous droits réservés.
+                        </div>
+                        <div className="flex gap-6 text-sm">
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Politique de confidentialité</a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">Conditions d'utilisation</a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     )
 }
- 
-
-
