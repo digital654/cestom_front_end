@@ -71,6 +71,8 @@ export function getTokenClaim<T = unknown>(token: string, key: string): T | unde
 
 
 export function getUserFromToken() {
+  if (typeof window === 'undefined') return null;
+  
   const token = localStorage.getItem("auth_token");
   if (!token) return null;
 
