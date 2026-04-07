@@ -7,6 +7,8 @@ import { PaymentCard } from "./components/profil/paymentcard";
 import { StatsCards } from "./components/stats/stats";
 import { ProfileCompletion } from "./components/profil/profilecompletion";
 import { getUserFromToken } from "@/lib/decode";
+import MembersTable from "./components/members/MembersTable";
+import { members } from "@/lib/mockMembers";
 
 export default function Page() {
   const user = getUserFromToken();
@@ -34,6 +36,7 @@ export default function Page() {
         </div>
         
       </div>
+      <MembersTable members={members} />
     </main>
   );
 }
